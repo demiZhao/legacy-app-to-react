@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import firebase from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/database';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Feed from "./Feed";
 import Jumbotron from "./Jumbotron";
@@ -42,13 +43,19 @@ class App extends Component {
           <Navigation></Navigation>
           <Jumbotron title={jumbotronTitle}></Jumbotron>
           <Switch>
-            <Route path="/contact" component={Contact}></Route>
-            <Route path="/about" component={About}></Route>
-            <Route
+          {/* <Route
               exact
               path="/"
               render={(props) => <Feed feeds={feeds}></Feed>}
-            ></Route>
+            ></Route> */}
+            <Route
+              exact
+              path="/"
+            >
+              <Feed feeds={feeds}></Feed>
+            </Route> 
+            <Route path="/contact" component={Contact}></Route>
+            <Route path="/about" component={About}></Route>
           </Switch>
           <div className="footer">
             <p>&copy; demi.y.zhao@gmail.com</p>
